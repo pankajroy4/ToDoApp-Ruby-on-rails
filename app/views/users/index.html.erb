@@ -1,0 +1,4 @@
+<% if session[:user_id]%>
+    <% @user=current_user%>
+    <%=render "shared/show"%> 
+<%end%>

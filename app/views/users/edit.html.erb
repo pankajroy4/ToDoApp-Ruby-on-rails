@@ -1,0 +1,15 @@
+<%= render "shared/errors" ,object: @user%>
+
+<div class="edit_account">
+        <div class="main">
+                <div class="signup">
+                        <%= form_with(model: @user)   do |f| %>
+                                <%=  f.text_field :name,placeholder: "User name",required: true,autofocus:true  %>
+                                <%=  f.email_field :email,placeholder: "Email",required: "" %>
+                                <%=  f.password_field :password,placeholder: "Password",required: "" %>
+                                <%=  f.password_field :password_confirmation,placeholder: "Confirm password",required: "" %>
+                                <%= f.submit "Update Account",class:"sub_button"%>
+                        <%end%>
+                </div>
+        </div>
+</div>

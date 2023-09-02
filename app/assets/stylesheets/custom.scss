@@ -1,0 +1,565 @@
+// Colors
+$light-yellow: #ffc;
+$red: #dc3545;
+// Custom Variables
+$error-color: $red;
+$error-background-color: $light-yellow;
+@import "bootstrap";
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+// ========================================================GENERAL===============
+html{
+  font-size:62.5%;
+}
+body{
+  background-color: rgb(223, 239, 252);
+}
+p{
+  margin:0;
+}
+ul li{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+}
+article{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 u{
+  color:#6d44b8;
+}
+.mail{
+  text-transform: lowercase;
+  text-decoration: underline red;
+  padding-bottom: 1rem;
+}
+.mail:hover{
+  color:$light-yellow;
+}
+// =================================================NAV BAR=============
+nav{
+  display: flex;
+  justify-content: space-between;
+  width:100vw;
+  align-items: center;
+  font-size: 2rem;
+  overflow: hidden;
+  padding-left: 5.5rem;
+  padding-right: 5.5rem;
+}
+header{
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+
+  overflow: hidden;
+}
+header h1 a,.tasks h2 u,.user h1, .user h2 a{
+  color:#fff;
+}
+header h1 a:hover,.tasks h2 u:hover{
+  color:$light-yellow;
+  cursor: pointer;
+}
+// .right{
+//   margin-top: 1rem;
+// }
+.right li,.right .signout_button{               //signout button
+  display: inline;
+
+}
+img{
+  width: 40px;
+  height:40px;
+}
+// ========================================================footer============
+.footer{
+  width:100%;
+  margin-top:3rem;
+  height:3rem;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  display: flex;
+  justify-content: center;
+  color:#ffff;
+  bottom: 0;
+  left:0;
+  position: fixed;
+  align-items: center;
+}
+.main_container{
+  margin-bottom: 3rem;
+}
+.footer p{
+  font-size: 1.5rem;
+}
+.footer p a{
+  color:#fff;
+  text-decoration: underline red;
+  font-size: 1.4rem;
+}
+.footer p a:hover{
+  color:$light-yellow;
+  cursor: pointer;
+} 
+//============================================ADDING NEW TASK/ TODO============
+.list{
+  text-align: center;
+  padding:3rem;
+  letter-spacing: 0.2rem;
+}
+.inp_f{
+  justify-content: center;
+  flex-direction: column;
+}
+.btnf{
+  width:100%;
+  margin-top:3rem;
+  height:7rem;
+  display:flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+.button{
+  border-radius: 1rem;
+  padding:1.2rem 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color:black;
+  outline: none;
+  background-color: rgb(123, 186, 194);
+}
+.button:hover{
+  background-color:  rgb(44, 167, 184);
+}
+input[type="text"]{
+  outline: none;
+  padding:1rem;
+  border-radius: 0.5rem;
+  width:30rem;
+  font-size: 1.8rem;
+  border:0px;
+}
+.sub input[type="submit"],.new_task_button a{
+  margin-top:4rem;
+  border-radius: .5rem;
+  padding:0.5rem 1rem 0.5rem 1rem;
+  font-size: 1.8rem;
+  text-transform: none;
+  color:#ffff;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  cursor: pointer;
+  outline: none;
+  border: 0px;
+}
+.new_task_button a{
+  margin-top:0;
+  margin-bottom:2rem;
+
+}
+.sub input[type="submit"]:hover,.new_task_button a:hover,.user .actions .edit_button:hover{
+  background: #6d44b8;
+  color:white;
+}
+.sub{
+  display:flex;
+  justify-content: center;
+  width:100%;
+} 
+.lbl{
+  font-size: 2rem;
+  color:#6d44b8;
+  margin-bottom: 0.5rem;;
+}
+.err{
+  font-size:1.4rem;
+  color:red;
+  line-height: .6rem;
+  margin-top:0.5rem;
+  display: flex;
+  justify-content: center;
+  flex: wrap;
+}
+//========================================USER ACCOUNT INFO=====================
+.user{
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  margin-top: 2.5rem;
+  display:flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 5px 20px 50px #000;
+}
+.actions{
+  padding:2rem;
+}
+.user .actions .edit_button{
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  padding:0.5rem 1rem 0.5rem 1rem;
+  border-radius: .5rem;
+  transition: all .6s ease-in-out;
+  margin-right: 1rem;
+}
+
+.user_and_tasks{
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 5rem;
+  width:100%;
+}
+.info{
+  color:#ffff;
+  font-size:1.4rem;
+}
+// =======================================TODOS LISTING=========================
+.tasks{
+  font-size: 1.8rem;
+  display: flex;
+  flex-wrap: ṇowrap;
+  width:85rem;
+  flex-direction: column;
+  height: auto;
+  margin:3rem;
+}
+.tasks h2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5rem 1.5rem 1.5rem 0rem;
+  padding:1rem 0rem 1rem 0rem;
+  border-radius: 0.5rem;
+  width:100%;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+.items:nth-child(odd){
+  background-color:azure;
+}
+.items{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right:0.6rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content:space-between;
+}
+.titless,.dates,.trash{
+  width:45%;
+  word-break: break-all;
+}
+.trash{
+  width:5%;
+}
+.trash a{
+  color:#4b1a7b;
+}
+.trash a:hover{
+  color:rgb(236, 42, 42);
+}
+.new_task_button{
+  display: flex;
+  justify-content: center;
+}
+// =======================login /Signup FORM / update account form=======================
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 3rem white inset !important;
+}
+.mybody{
+	margin-top: 2rem;
+  margin-bottom: 2rem;
+	padding-bottom: 3rem;
+  padding-top:3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Jost', sans-serif;
+}
+.edit_account .main .signup{
+  margin-top:9rem;
+}
+.edit_account .main .signup .sub_button{
+  width:50%
+}
+.main{
+	width: 35rem;
+	height: 50rem;
+	 background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+}
+.login{
+	height: 46rem;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-18rem);
+	transition: .6s ease-in-out;
+}
+.labels{
+	color: #fff;
+	font-size: 2.3rem;
+	justify-content: center;
+	display: flex;
+	margin: 6rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.label{
+  text-transform: none;
+}
+.login .labels{
+	color: #573b8a;
+  font-size:1.6rem;
+  padding-top:1.5rem;
+}
+.main input[type="text"],input[type="email"],input[type="password"]{
+	width: 70%;
+	height: 3rem;
+	justify-content: center;
+	display: flex;
+  font-size: 1.5rem;
+	margin: 2rem auto;
+	padding: 1rem;
+	border: none;
+	outline: none;
+	border-radius: 0.5rem;
+  background-color: #fff !important;
+}
+.main input[type="submit"]{
+  width: 100%;
+	height: 4rem;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+  font-size: 1.5rem;
+	font-weight: bold;
+	outline: none;
+	border: none;
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+.main input[type="submit"]:hover{
+	background: #6d44b8;
+}
+.sub_button{
+	width: 60%;
+	height: 4rem;
+	margin: 1rem auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+  font-size: 1.5rem;
+	font-weight: bold;
+	margin-top: 2rem;
+	outline: none;
+	border: none;
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+.button_to,.delt_act,.delt_tasks{
+  display: inline-block;
+}
+.signout_button{
+  outline: none;
+  border:0px;
+}
+
+
+
+.signout_button,.user_name,.header_button .label{
+  display: inline-block;
+  font-size: 1.8rem;
+  padding:0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color:#6d44b8;
+  cursor: pointer;
+  transition: all .6s ease-in-out;
+}
+.user_name,.signout_button,.edit_button{
+  background-color: #ffff;
+  color:#6d44b8;
+  text-transform:none;
+}
+.header_button .label{
+  color:#fff;
+}
+.header_button .label:hover{
+  color:$light-yellow;
+}
+.signout_button:hover,.user_name:hover{
+  background: #6d44b8;
+  color:white;
+}
+.edit_account{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.checked{
+	transform: translateY(-50rem);
+}
+.login_label_checked{
+	transform: scale(1.5);	
+  color:green;
+}
+.signup_label_checked{
+	transform: scale(.7);
+}
+
+.delt_button:hover{
+  background-color: red;
+  color:white;
+}
+.swal2-confirm,.swal2-cancel{
+  font-size: 1.5rem;
+  padding:.5rem;
+}
+.swal2-cancel{
+  margin-right: 1rem;
+}
+// =================================Flashes==========================
+.flash {
+  @extend .alert;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  &.notice {
+    @extend .alert-success;
+  }
+  &.alert {
+    @extend .alert-danger;
+  }
+}
+// ============================Errors===================================
+.errors_container{
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // width:100%;
+  top:4rem;
+  left:3.1rem;
+  z-index: 10000;
+  position:fixed;
+}
+section.errors {
+margin: auto;
+margin-top:2rem;
+width: 33rem;
+box-shadow: 5px 20px 50px #000;
+padding: 1.5rem;
+border-radius: 0.6rem;
+background: $error-background-color;
+display: inline-block;
+}
+section.errors h2 {
+  color: $error-color;
+  font-size: 2rem;
+}
+section.errors h3 {
+  font-size: 1.3rem;
+  margin-top: 1.3rem;
+  font-weight: 600;
+}
+section.errors ul li{
+  font-size: 1.1rem;
+}
+// ==================------===========Media Queries=======================
+@media screen and (max-width:502px){
+  h1,h2{
+    font-size: 16px;
+  }
+  nav{
+    padding-left:1rem;
+    padding-right:1rem;
+   }
+ .signout_button,.user_name{
+    padding:.4rem;
+    margin:.4rem;
+ }
+ ul li a{
+  font-size: 1.5rem;
+  padding:.1rem
+ }
+ ul li{
+  padding:0;
+  margin:0;
+ }
+ ul{
+  padding-left: .4rem;
+  margin-bottom: .2rem;
+ }
+ img{
+  width:30px;
+  height:30px;
+ }
+}
+@media screen and (max-width:660px){
+ .items{
+  flex-direction: column;
+ }
+ .items{
+  font-size: 16px;
+  border-bottom: #302b63 1px dotted;
+ }
+ .items .titless,.dates,.trash{
+  width:100%;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .items .titless{
+  text-decoration: underline;
+  font-weight: bold;
+ }
+ .fa-trash-can{
+  transform: scale(1.5);
+ }
+ 
+ .items .titless::before{
+    content:"* ";
+    transform: scale(31);
+ }
+ .trash{
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 1rem 0;
+ }
+ .fa-trash-can{
+  padding: .1rem;
+ }
+ .errors_container{
+  top:1rem;
+  left:2.2rem;
+  position:relative;
+}
+
+}
+.right{
+  margin:0.5rem 0 .5rem 0;
+}

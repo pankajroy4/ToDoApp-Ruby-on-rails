@@ -1,0 +1,17 @@
+<h1 class="list"><u>Adding new Task</u></h1>
+<article >
+    <div class="secf">
+        <%= form_with(model: [@user,@todo]) do |f|%>
+            <section class="lbl"><%= f.label :'Type Here' %></section>
+            <section class="inp_f">
+                <%= f.text_field  :title ,autofocus: true %>
+                <% @todo.errors.full_messages_for(:title).each do |message| %>
+                    <span class="err"><%= message %></span>
+                <% end %>
+            </section>
+            <section class="sub">
+                <%= f.submit %>
+            </section>
+        <%end%> 
+    </div>
+</article>

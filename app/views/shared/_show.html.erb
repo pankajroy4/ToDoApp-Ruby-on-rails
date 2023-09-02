@@ -1,0 +1,48 @@
+<%= javascript_include_tag "alerts" %>
+
+
+<%= render "shared/errors" ,object: @user%>
+<section class="user_and_tasks">
+  <section class="user">
+    <h1> <%= @user.name %> </h1>
+    <h2 > <%= mail_to(@user.email ,class:"mail")%></h2>
+    <h2 class="info">Created On: <%=@user.created_at.localtime.strftime("%d/%m/%Y , %r") %></h2>
+    <h2 class="info"><%=@user.created_at.localtime.strftime(" %Z") %></h2>
+    <% if current_user?(@user)%>
+      <div class="actions">
+        <%= link_to "Edit Account",edit_user_path(@user) ,class:"edit_button edit"%>
+        <%= button_to "Delete Account",@user,method: :delete ,form_class: "delt_act" ,class:"signout_button delt_button delete "%>
+      </div>
+    <%end%>
+  </section>
+
+  <section class="tasks">
+    <% if @user.todos.size >0%>
+      <% if current_user?(@user)%>
+        <h2><u>Your Task</u></h2>
+      <%else%>
+        <h2><u> <%= "#{@user.name}'s Task" %></u></h2>
+      <%end%>
+      <% @user.todos.each do |r| %>
+        <div class="items">
+            <div class="titless"><%=r.title %> </div>
+            <div class="dates">created at : <%= time_ago_in_words(r.created_at)%> ago</div>
+            <% if current_user?(@user)%>
+              <div class="trash">
+              
+                <%= button_to '<i class="fa-solid fa-trash-can delt_task"></i>'.html_safe,user_todo_path(r.user_id,r.id),method: :delete ,form_class: "delt_tasks" ,class:"signout_button delt_button delete "%>
+
+              </div> 
+            <%end%>
+        </div>
+      <%end%>
+    <%end%>
+  </section>
+</section>
+
+<% if current_user?(@user)%>
+  <section class="new_task_button">
+    <%=link_to "Add Task", new_user_todo_path(@user.id)%>
+  </section>
+<%end%>
+

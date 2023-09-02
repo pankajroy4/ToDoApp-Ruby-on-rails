@@ -1,0 +1,33 @@
+<%= javascript_include_tag ("test")%>
+<%= render "shared/errors" , object: @user%>
+<%unless session[:user_id]%>
+    <div class="mybody">
+        <div class="main user_form">   
+            <div class="signup">
+                <div class="signup_form signup">
+                    <span class="signup_link signup_label labels"> Sign up </span>
+        
+                    <%= form_with(model: @user)   do |f| %>
+                        <%=  f.text_field :name,placeholder: "User name",required: true,autofocus:true %>
+                        <%=  f.email_field :email,placeholder: "Email",required: "" %>
+                        <%=  f.password_field :password,placeholder: "Password",required: "" %>
+                        <%=  f.password_field :password_confirmation,placeholder: "Confirm password",required: "" %>
+                        <button class="sub_button"> <%= f.submit "Sign Up"%> </button>
+                    <%end%> 
+                </div>
+                <div class="login_form login">
+                    <span class="login_link login_label labels"> Login </span>
+                    <%= form_with(url: session_url)   do |f| %> 
+                        <%=  f.email_field :email,placeholder: "Email",required: "",autofocus:true %>
+                        <%=  f.password_field :password,placeholder: "Password",required: "" %>
+                        <button class="sub_button"> <%= f.submit "Log In"%></button>
+                    <%end%>
+                </div>    
+            </div>
+        </div>
+    </div>
+<%end%>
+<% if session[:user_id]%>
+    <% @user=current_user%>
+    <%=render "shared/show"%>
+<%end%>
